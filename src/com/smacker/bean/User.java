@@ -153,7 +153,7 @@ public class User {
 	 * 一对多，获取该用户所发布的所用物品
 	 * @return
 	 */
-	@OneToMany(mappedBy="commodityOwnerId",cascade={CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="commodityOwner",cascade={CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch=FetchType.LAZY)
 	public Set<Commodity> getAllCommoditys() {
 		return allCommoditys;
 	}
