@@ -38,6 +38,7 @@ public class User {
 	private Timestamp userCreateDate = null;
 	private String isVerify = "0";//是否认证 (0:尚未认证；1:认证成功；2:认证失败；3:正在认证)
 	private String userTel = null;//电话
+	private String school = null;//学校
 	/**
 	 * 获取该用户所创建的所有的物品
 	 */
@@ -159,5 +160,11 @@ public class User {
 	}
 	public void setAllCommoditys(Set<Commodity> allCommoditys) {
 		this.allCommoditys = allCommoditys;
+	}
+	public String getSchool() {
+		return school;
+	}
+	public void setSchool(String school) {
+		this.school = school;
 	}
 }

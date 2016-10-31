@@ -18,6 +18,7 @@ create table t_user(
     userTel varchar(20) unique,					--用户电话
     userWeChat varchar(20) unique,
     isVerify varchar(1) default '0'				--是否认证 (0:尚未认证；1:认证成功；2:认证失败；3:正在认证)
+    school varchar(32) 
 )engine=innoDB default charset=utf8
 
 create table t_commodity(
