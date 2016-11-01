@@ -25,7 +25,6 @@ create table t_commodity(
 	commodityId varchar(32) primary key,
 	commodityName varchar(32) not null,				--物品名称
 	commodityCategary varchar(10),					--物品类别
-	commodityStatus int default -1,					--物品状态
 	commodityPicture varchar(255),					--物品图片
 	commodityDescribe varchar(255),					--物品描述
 	commodityCount int default -1,					--物品数量

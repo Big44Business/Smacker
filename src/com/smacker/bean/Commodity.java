@@ -23,7 +23,7 @@ private final static String COMMODITY_DEFAULT = "";
 	private String commodityId = null;
 	private String commodityName = null;//物品名称
 	private String commodityCategary = null;//物品类别
-	private Integer commodityStatus = -1;//物品状态
+	private String isOrder = null;//是否被定(0:正在出售,1:已被订购,2:已出售)
 	private String commodityPicture = null;//物品图片
 	private String commodityDescribe = null;//物品描述
 	private Integer commodityCount = -1;//物品数量
@@ -50,17 +50,17 @@ private final static String COMMODITY_DEFAULT = "";
 	public void setCommodityName(String commodityName) {
 		this.commodityName = commodityName;
 	}
+	public String getIsOrder() {
+		return isOrder;
+	}
+	public void setIsOrder(String isOrder) {
+		this.isOrder = isOrder;
+	}
 	public String getCommodityCategary() {
 		return commodityCategary;
 	}
 	public void setCommodityCategary(String commodityCategary) {
 		this.commodityCategary = commodityCategary;
-	}
-	public Integer getCommodityStatus() {
-		return commodityStatus;
-	}
-	public void setCommodityStatus(Integer commodityStatus) {
-		this.commodityStatus = commodityStatus;
 	}
 	public String getCommodityPicture() {
 		return commodityPicture;
