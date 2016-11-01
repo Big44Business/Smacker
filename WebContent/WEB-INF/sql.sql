@@ -35,6 +35,30 @@ create table t_commodity(
 	commodityOwnerId varchar(32) not null,			--拥有者
 	commodifyCreateDate datetime default current_timestamp,		--创建时间
 	wantShopCount int default 0,					--欲购物人数
+	isOrder varchar(1) default "0",					--是否被定(0:正在出售,1:已被订购,2:已出售)
 	constraint foreign key (commodityOwnerId) references t_user (userId)
 )engine=innoDB default charset=utf8
 
+--用来记录订单
+create table t_commodityOrder (
+	orderId varchar(32) primary key,
+	commodityId varchar(32) not null,							--物品Id
+	unitPrice int default 0,									--单价
+	commodityCount int default 0,								--个数
+	userId varchar(32) not null,
+	sellerId varchar(32) not null,
+	addr varchar(255) not null,									--地址
+	status varchar(1) default "0",								--状态(0:订单未创建；1:订单成功；2:订单作废)
+	orderDate datetime default current_timestamp,				--创建时间
+	constraint foreign key (userId) references t_user(userId),
+	constraint foreign key (sellerId) references t_user(userId),
+	constraint foreign key (commodityId) references t_commodity(commodityId)
+)engine=innoDB default charset=utf8;
+--购物车
+create table t_shopCar (
+	shopCarId int primary key auto_increment,
+	userId varchar(32) not null,
+	commodityId varchar(32) not null,
+	constraint foreign key (userId) references t_user(userId),
+	constraint foreign key (commodityId) references t_commodity(commodityId)
+)engine=innoDB default charset=utf8;
