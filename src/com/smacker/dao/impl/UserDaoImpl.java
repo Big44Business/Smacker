@@ -52,7 +52,7 @@ public class UserDaoImpl implements UserDao {
 				public Boolean doInHibernate(Session session) throws HibernateException, SQLException {
 					String hql = "delete User where userId=?";
 					Query q = session.createQuery(hql);
-					q.setString("userId", userId);
+					q.setParameter("userId", userId);
 					q.executeUpdate();
 					return false;
 				}
@@ -67,16 +67,20 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public User getUserInId(String userId) {
 		try {
-			List<User> result = hibernateTemplate.executeFind(new HibernateCallback<User>() {
+			return hibernateTemplate.execute(new HibernateCallback<User>() {
 
 				@Override
 				public User doInHibernate(Session session) throws HibernateException, SQLException {
-					
+					String hql = "from User where userId=?";
+					Query q = session.createQuery(hql);
+					q.setParameter("userId", userId);
+					List<User> users = q.list();
+					if(users!=null&&users.size()==1)
+						return users.get(0);
 					return null;
 				}
 				
 			});
-			return result.get(0);
 		} catch (Exception e) {
 			return null;
 		}
@@ -84,13 +88,13 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public User getUser(User user) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Resource(name = "hibernateTemplate")
 	public void setHihernateTemplate(HibernateTemplate hihernateTemplate) {
-		this.hihernateTemplate = hihernateTemplate;
+		this.hibernateTemplate = hihernateTemplate;
 	}
 
 }
