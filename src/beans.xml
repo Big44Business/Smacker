@@ -47,6 +47,8 @@
 			<list>
 				<value>com.smacker.bean.User</value>
 				<value>com.smacker.bean.Commodity</value>
+				<value>com.smacker.bean.Order</value>
+				<value>com.smacker.bean.ShopCar</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
