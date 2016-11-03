@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -42,6 +43,19 @@ public class User {
 	 * 获取该用户所创建的所有的物品
 	 */
 	private Set<Commodity> allCommoditys = new HashSet<>();
+	/**
+	 * 获取该用户所创建的所有的订单
+	 */
+	private Set<Order> creatorOrders = new HashSet<>();
+	/**
+	 * 获取该用户所接收的所有的订单
+	 */
+	private Set<Order> sellerOrders = new HashSet<>();
+	
+	/**
+	 * 获取该用户的购物车
+	 */
+	private ShopCar shopCar = null;
 	
 	@Id
 	@GenericGenerator(name="uuid", strategy="uuid")
@@ -149,6 +163,13 @@ public class User {
 		this.userTel = userTel;
 	}
 	
+	public String getSchool() {
+		return school;
+	}
+	public void setSchool(String school) {
+		this.school = school;
+	}
+	
 	/**
 	 * 一对多，获取该用户所发布的所用物品
 	 * @return
@@ -160,10 +181,36 @@ public class User {
 	public void setAllCommoditys(Set<Commodity> allCommoditys) {
 		this.allCommoditys = allCommoditys;
 	}
-	public String getSchool() {
-		return school;
+	/**
+	 * 一对多，获取该用户所创建的所有订单
+	 * @return
+	 */
+	@OneToMany(mappedBy="userId",cascade={CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch=FetchType.LAZY)
+	public Set<Order> getCreatorOrders() {
+		return creatorOrders;
 	}
-	public void setSchool(String school) {
-		this.school = school;
+	public void setCreatorOrders(Set<Order> creatorOrders) {
+		this.creatorOrders = creatorOrders;
 	}
+	
+	/**
+	 * 一对多，获取该用户是卖家身份所接收的所有订单
+	 * @return
+	 */
+	@OneToMany(mappedBy="sellerId",cascade={CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch=FetchType.LAZY)
+	public Set<Order> getSellerOrders() {
+		return sellerOrders;
+	}
+	public void setSellerOrders(Set<Order> sellerOrders) {
+		this.sellerOrders = sellerOrders;
+	}
+	
+	@OneToOne(mappedBy="userId",cascade={CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch=FetchType.LAZY)
+	public ShopCar getShopCar() {
+		return shopCar;
+	}
+	public void setShopCar(ShopCar shopCar) {
+		this.shopCar = shopCar;
+	}
+	
 }
