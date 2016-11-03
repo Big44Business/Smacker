@@ -1,7 +1,6 @@
 package com.smacker.dao.impl;
 
 import java.sql.SQLException;
-import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -27,6 +26,7 @@ public class UserDaoImpl implements UserDao {
 			hibernateTemplate.save(user);
 			return true;
 		} catch (DataAccessException e) {
+System.out.println("在UserDaoImpl中，保存用户信息时出现异常！");
 			e.printStackTrace();
 			return false;
 		}
@@ -38,16 +38,16 @@ public class UserDaoImpl implements UserDao {
 			hibernateTemplate.update(user);
 			return true;
 		} catch (DataAccessException e) {
+System.out.println("在UserDaoImpl中，更新用户信息时出现异常！");
 			e.printStackTrace();
 			return false;
 		}
 	}
 
 	@Override
-	public boolean deleteUser(String userId) {
+	public boolean deleteUser(final String userId) {
 		try {
 			return hibernateTemplate.execute(new HibernateCallback<Boolean>() {
-
 				@Override
 				public Boolean doInHibernate(Session session) throws HibernateException, SQLException {
 					String hql = "delete User where userId=?";
@@ -59,6 +59,7 @@ public class UserDaoImpl implements UserDao {
 
 			});
 		} catch (Exception e) {
+System.out.println("在UserDaoImpl中，删除用户信息时出现异常！");
 			e.printStackTrace();
 			return false;
 		}
@@ -66,7 +67,9 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public User getUserInId(String userId) {
-		try {
+		
+		return	hibernateTemplate.get(User.class, userId);
+		/*try {
 			return hibernateTemplate.execute(new HibernateCallback<User>() {
 
 				@Override
@@ -83,7 +86,7 @@ public class UserDaoImpl implements UserDao {
 			});
 		} catch (Exception e) {
 			return null;
-		}
+		}*/
 	}
 
 	@Override
