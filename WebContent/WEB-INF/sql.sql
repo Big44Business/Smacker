@@ -53,9 +53,10 @@ create table t_commodityOrder (
 	constraint foreign key (sellerId) references t_user(userId),
 	constraint foreign key (commodityId) references t_commodity(commodityId)
 )engine=innoDB default charset=utf8;
+
 --购物车
 create table t_shopCar (
-	shopCarId int primary key auto_increment,
+	shopCarId varchar(32) primary key,
 	userId varchar(32) not null,
 	commodityId varchar(32) not null,
 	constraint foreign key (userId) references t_user(userId),
