@@ -18,6 +18,17 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name="t_user")
 public class User {
 	
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", userNickName=" + userNickName + ", userEmail=" + userEmail
+				+ ", userRealName=" + userRealName + ", userPassword=" + userPassword + ", userIntroduce="
+				+ userIntroduce + ", userGender=" + userGender + ", userBirthday=" + userBirthday + ", userPhoto="
+				+ userPhoto + ", userRealPhoto=" + userRealPhoto + ", userAddress=" + userAddress + ", userIp=" + userIp
+				+ ", userWeChat=" + userWeChat + ", userIdCard=" + userIdCard + ", userCreateDate=" + userCreateDate
+				+ ", isVerify=" + isVerify + ", userTel=" + userTel + ", school=" + school + ", allCommoditys="
+				+ allCommoditys + ", creatorOrders=" + creatorOrders + ", sellerOrders=" + sellerOrders + ", shopCar="
+				+ shopCar + "]";
+	}
 	@SuppressWarnings("unused")
 	private final static String PHOTO_DEFAULT = "";
 
