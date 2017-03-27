@@ -12,5 +12,6 @@ public interface UserDao {
 	 * @param user
 	 * @return
 	 */
-	public User getUser(User user);
+	public User getUser(final User user);
+	public User getUserByNickName(final String nickName);
 }

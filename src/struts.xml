@@ -23,6 +23,6 @@
 	</package>
 	
     <package name="default" extends="struts-default" namespace="/"> 
-    
+    	<action name="login" class="loginAction" />
     </package>
 </struts>

@@ -1,6 +1,7 @@
 package com.smacker.dao.impl;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -90,9 +91,46 @@ System.out.println("在UserDaoImpl中，删除用户信息时出现异常！");
 	}
 
 	@Override
-	public User getUser(User user) {
+	public User getUserByNickName(final String userNickName) {
+		try {
+			return hibernateTemplate.execute(new HibernateCallback<User>() {
+
+				@Override
+				public User doInHibernate(Session session) throws HibernateException, SQLException {
+					String hql = "from User where userNickName = :userNickName";
+					@SuppressWarnings("unchecked")
+					List<User> users = session.createQuery(hql).setString("userNickName", userNickName).list();
+					if(users != null && users.size() == 1)
+						return users.get(0);
+					else
+						return null;
+				}
+			});
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	@Override
+	public User getUser(final User user) {
 		
-		return null;
+		if(user != null) {
+			/**
+			 * 根据id获取user对象
+			 */
+			if(user.getUserId() != null) {
+				return hibernateTemplate.get(User.class, user.getUserId());
+			}
+			
+			/**
+			 * 根据昵称获取user对象
+			 */
+			if(user.getUserNickName() != null) {
+				return getUserByNickName(user.getUserNickName());
+			}
+		} else
+			return null;
+		return user;
 	}
 
 	@Resource(name = "hibernateTemplate")
