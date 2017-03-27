@@ -72,6 +72,7 @@ System.out.println("在UserDaoImpl中，删除用户信息时出现异常！");
 		return	hibernateTemplate.get(User.class, userId);
 		/*try {
 			return hibernateTemplate.execute(new HibernateCallback<User>() {
+
 				@Override
 				public User doInHibernate(Session session) throws HibernateException, SQLException {
 					String hql = "from User where userId=?";

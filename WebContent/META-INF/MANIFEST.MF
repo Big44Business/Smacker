@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 Manifest-Version: 1.0
 Class-Path: 
 
@@ -7,3 +8,8 @@ Manifest-Version: 1.0
 Class-Path: 
 
 >>>>>>> c5500473ca1d5ec9425999976c0c5b2d7cce035b
+=======
+Manifest-Version: 1.0
+Class-Path: 
+
+>>>>>>> branch 'master' of git@github.com:Big44Business/Smacker.git
