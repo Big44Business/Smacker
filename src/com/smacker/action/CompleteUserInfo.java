@@ -20,6 +20,12 @@ import com.smacker.dao.UserDao;
 @Scope("prototype")
 public class CompleteUserInfo extends ActionSupport {
 
+	@Override
+	public String toString() {
+		return "CompleteUserInfo [ud=" + ud + ", userNickName=" + userNickName + ", userIntroduce=" + userIntroduce
+				+ ", userGender=" + userGender + ", userAddress=" + userAddress + ", userTel=" + userTel + "]";
+	}
+
 	private UserDao ud;
 
 	public UserDao getUd() {
@@ -83,6 +89,7 @@ public class CompleteUserInfo extends ActionSupport {
 	}
 	
 	public void complete() {
+
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = null;

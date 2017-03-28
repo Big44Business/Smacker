@@ -2,6 +2,7 @@ package com.smacker.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Timestamp;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -96,6 +97,7 @@ public class LoginAction extends ActionSupport {
 				User userSave = new User();
 				userSave.setUserNickName(userNickName);
 				userSave.setUserPassword(password);
+				userSave.setUserCreateDate(new Timestamp(System.currentTimeMillis()));
 				if(ud.saveUser(userSave)) {
 					success = true;
 					ServletActionContext.getRequest().getSession().setAttribute("user", userSave);

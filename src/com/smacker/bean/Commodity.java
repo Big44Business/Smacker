@@ -22,7 +22,7 @@ private final static String COMMODITY_DEFAULT = "";
 	
 	private String commodityId = null;
 	private String commodityName = null;//物品名称
-	private String commodityCategary = null;//物品类别
+	private String commodityCategary = null;//物品类别(0:出售的商品，1:预购的商品，2:二手物品交换)
 	private String isOrder = null;//是否被定(0:正在出售,1:已被订购,2:已出售)
 	private String commodityPicture = null;//物品图片
 	private String commodityDescribe = null;//物品描述

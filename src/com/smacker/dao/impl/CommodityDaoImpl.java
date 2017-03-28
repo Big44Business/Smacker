@@ -67,10 +67,10 @@ public class CommodityDaoImpl implements CommodityDao {
 	}
 
 	@Override
-		public Commodity getCommodity(Commodity cmty){
-				//调用getCommodityInId(String);
-				return getCommodityInId(cmty.getCommodityId());
-		}
+	public Commodity getCommodity(Commodity cmty){
+			//调用getCommodityInId(String);
+			return getCommodityInId(cmty.getCommodityId());
+	}
 
 	@Resource(name = "hibernateTemplate")
 	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
