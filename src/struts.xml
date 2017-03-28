@@ -21,8 +21,8 @@
     		<result>/index.jsp</result>
     	</action>
 	</package>
-	
     <package name="default" extends="struts-default" namespace="/"> 
     	<action name="login" class="loginAction" />
+    	<action name="completeInfo" class="completeUserInfo" />
     </package>
 </struts>
