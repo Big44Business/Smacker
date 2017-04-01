@@ -21,8 +21,12 @@
     		<result>/index.jsp</result>
     	</action>
 	</package>
-    <package name="default" extends="struts-default" namespace="/"> 
+    <package name="default" extends="struts-default" namespace="/">
+    	<!-- 登陆action --> 
     	<action name="login" class="loginAction" />
+    	<!-- 完善用户资料的action -->
     	<action name="completeInfo" class="completeUserInfo" />
+    	<!-- 获取商品信息action -->
+    	<action name="getCommodityInfo" class="getCommodityInfo" />
     </package>
 </struts>
