@@ -28,5 +28,7 @@
     	<action name="completeInfo" class="completeUserInfo" />
     	<!-- 获取商品信息action -->
     	<action name="getCommodityInfo" class="getCommodityInfo" />
+    	<!-- 进行商品的搜索 -->
+    	<action name="searchCommodity" class="searchCommodity" />
     </package>
 </struts>

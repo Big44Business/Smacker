@@ -129,4 +129,14 @@ private final static String COMMODITY_DEFAULT = "";
 	public void setWantShopCount(Integer wantShopCount) {
 		this.wantShopCount = wantShopCount;
 	}
+	/**
+	 * 增加隐藏用户敏感信息字段
+	 */
+	public void hideOwnerField() {
+		commodityOwner.setAllCommoditys(null);
+		commodityOwner.setCreatorOrders(null);
+		commodityOwner.setSellerOrders(null);
+		commodityOwner.setShopCar(null);
+		commodityOwner.setUserPassword(null);
+	}
 }

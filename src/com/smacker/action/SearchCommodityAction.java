@@ -2,6 +2,7 @@ package com.smacker.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -17,17 +18,17 @@ import com.smacker.bean.Commodity;
 import com.smacker.dao.CommodityDao;
 
 @SuppressWarnings("serial")
-@Component("getCommodityInfo")
+@Component("searchCommodity")
 @Scope("prototype")
-public class GetCommodityInfoAction extends ActionSupport {
+public class SearchCommodityAction extends ActionSupport {
 
+	private String content;
 	private CommodityDao cd;
-	private String id;
-	public String getId() {
-		return id;
+	public String getContent() {
+		return content;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setContent(String content) {
+		this.content = content;
 	}
 	public CommodityDao getCd() {
 		return cd;
@@ -38,9 +39,10 @@ public class GetCommodityInfoAction extends ActionSupport {
 	}
 	
 	/**
-	 * 通过商品Id获取商品信息
+	 * 进行产品模糊查询的函数
 	 */
-	public void getCommodityInfoById() {
+	public void search() {
+		
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = null;
@@ -51,16 +53,19 @@ public class GetCommodityInfoAction extends ActionSupport {
 		try {
 			out = response.getWriter();
 		} catch(IOException e) {}
-		Commodity c = cd.getCommodityInId(id);
-		if(c != null) {
-			/**
-			 * 将不需要的字段 隐藏
-			 */
-			c.hideOwnerField();
-			success = true;
-			jo.add("commodity", gson.toJsonTree(c));
-		} else
-			reason = "该商品不存在";
+		
+		if(content != null && content.trim().hashCode() != 0) {
+			List<Commodity> cmdys = cd.getCommodityBySearch(content);
+			if(cmdys != null && cmdys.size() != 0) {
+				success = true;
+				for(Commodity c : cmdys) {
+					c.hideOwnerField();
+				}
+				jo.add("commoditys", gson.toJsonTree(cmdys));
+			} else
+				reason = "暂无该商品";
+		} else 
+			reason = "请输入您要搜索的关键字！";
 		
 		jo.addProperty("success", success);
 		jo.addProperty("reason", reason);
@@ -69,4 +74,5 @@ public class GetCommodityInfoAction extends ActionSupport {
 		out.flush();
 		out.close();
 	}
+	
 }

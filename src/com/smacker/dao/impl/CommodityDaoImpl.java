@@ -1,6 +1,7 @@
 package com.smacker.dao.impl;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -75,5 +76,25 @@ public class CommodityDaoImpl implements CommodityDao {
 	@Resource(name = "hibernateTemplate")
 	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
 		this.hibernateTemplate = hibernateTemplate;
+	}
+
+	@Override
+	public List<Commodity> getCommodityBySearch(final String content) {
+		// TODO Auto-generated method stub
+		try {
+			return hibernateTemplate.execute(new HibernateCallback<List<Commodity>>() {
+				@SuppressWarnings("unchecked")
+				@Override
+				public List<Commodity> doInHibernate(Session session) throws HibernateException, SQLException {
+					String hql = "from Commodity c where c.commodityName like :commodityName";
+					Query q = session.createQuery(hql);
+					q.setString("commodityName", "%" + content + "%");
+					return (List<Commodity>)q.list();
+				}
+			});
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

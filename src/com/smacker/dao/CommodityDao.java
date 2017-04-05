@@ -1,5 +1,7 @@
 package com.smacker.dao;
 
+import java.util.List;
+
 import com.smacker.bean.Commodity;
 
 public interface CommodityDao {
@@ -13,4 +15,6 @@ public interface CommodityDao {
 	 * @return
 	 */
 	public Commodity getCommodity(Commodity cmdty);
+	
+	public List<Commodity> getCommodityBySearch(String content);
 }
