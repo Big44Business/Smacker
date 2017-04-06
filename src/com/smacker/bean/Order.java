@@ -20,7 +20,7 @@ public class Order {
 	
 	private String orderId = null;
 	private Commodity commodityId = null;	//商品
-	private int unitPrice = 0;				//单价
+	private String unitPrice = "0.00";				//单价
 	private int commodityCount = 0;			//个数
 	private User userId = null;				//买方
 	private User sellerId = null;			//卖方
@@ -50,10 +50,10 @@ public class Order {
 	public void setCommodityId(Commodity commodityId) {
 		this.commodityId = commodityId;
 	}
-	public int getUnitPrice() {
+	public String getUnitPrice() {
 		return unitPrice;
 	}
-	public void setUnitPrice(int unitPrice) {
+	public void setUnitPrice(String unitPrice) {
 		this.unitPrice = unitPrice;
 	}
 	public int getCommodityCount() {

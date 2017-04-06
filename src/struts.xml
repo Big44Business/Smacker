@@ -30,5 +30,8 @@
     	<action name="getCommodityInfo" class="getCommodityInfo" />
     	<!-- 进行商品的搜索 -->
     	<action name="searchCommodity" class="searchCommodity" />
+    	
+    	<!-- 购买商品，提交订单处理 -->
+    	<action name="buyCommodity" class="buyCommodity" />
     </package>
 </struts>

@@ -17,6 +17,16 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name="t_commodity")
 public class Commodity {
 	
+@Override
+	public String toString() {
+		return "Commodity [commodityId=" + commodityId + ", commodityName=" + commodityName + ", commodityCategary="
+				+ commodityCategary + ", isOrder=" + isOrder + ", commodityPicture=" + commodityPicture
+				+ ", commodityDescribe=" + commodityDescribe + ", commodityCount=" + commodityCount
+				+ ", commodityOldNewLevel=" + commodityOldNewLevel + ", commodityNewPrice=" + commodityNewPrice
+				+ ", commodityOldPrice=" + commodityOldPrice + ", commodityOwner=" + commodityOwner
+				+ ", commodityDownDay=" + commodityDownDay + ", commodifyCreateDate=" + commodifyCreateDate
+				+ ", wantShopCount=" + wantShopCount + "]";
+	}
 @SuppressWarnings("unused")
 private final static String COMMODITY_DEFAULT = "";
 	
