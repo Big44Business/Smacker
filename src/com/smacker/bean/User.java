@@ -1,15 +1,12 @@
 package com.smacker.bean;
 
 import java.sql.Timestamp;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -19,17 +16,6 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name="t_user")
 public class User {
 	
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", userNickName=" + userNickName + ", userEmail=" + userEmail
-				+ ", userRealName=" + userRealName + ", userPassword=" + userPassword + ", userIntroduce="
-				+ userIntroduce + ", userGender=" + userGender + ", userBirthday=" + userBirthday + ", userPhoto="
-				+ userPhoto + ", userRealPhoto=" + userRealPhoto + ", userAddress=" + userAddress + ", userIp=" + userIp
-				+ ", userWeChat=" + userWeChat + ", userIdCard=" + userIdCard + ", userCreateDate=" + userCreateDate
-				+ ", isVerify=" + isVerify + ", userTel=" + userTel + ", school=" + school + ", allCommoditys="
-				+ allCommoditys + ", creatorOrders=" + creatorOrders + ", sellerOrders=" + sellerOrders + ", shopCar="
-				+ shopCar + "]";
-	}
 	@SuppressWarnings("unused")
 	private final static String PHOTO_DEFAULT = "";
 
@@ -51,19 +37,6 @@ public class User {
 	private String isVerify = "0";//是否认证 (0:尚未认证；1:认证成功；2:认证失败；3:正在认证)
 	private String userTel = null;//电话
 	private String school = null;//学校
-	/**
-	 * 获取该用户所创建的所有的物品
-	 */
-	private Set<Commodity> allCommoditys = new HashSet<>();
-	/**
-	 * 获取该用户所创建的所有的订单
-	 */
-	private Set<Order> creatorOrders = new HashSet<>();
-	/**
-	 * 获取该用户所接收的所有的订单
-	 */
-	private Set<Order> sellerOrders = new HashSet<>();
-	
 	/**
 	 * 获取该用户的购物车
 	 */
@@ -180,41 +153,6 @@ public class User {
 	}
 	public void setSchool(String school) {
 		this.school = school;
-	}
-	
-	/**
-	 * 一对多，获取该用户所发布的所用物品
-	 * @return
-	 */
-	@OneToMany(mappedBy="commodityOwner",cascade={CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch=FetchType.LAZY)
-	public Set<Commodity> getAllCommoditys() {
-		return allCommoditys;
-	}
-	public void setAllCommoditys(Set<Commodity> allCommoditys) {
-		this.allCommoditys = allCommoditys;
-	}
-	/**
-	 * 一对多，获取该用户所创建的所有订单
-	 * @return
-	 */
-	@OneToMany(mappedBy="userId",cascade={CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch=FetchType.LAZY)
-	public Set<Order> getCreatorOrders() {
-		return creatorOrders;
-	}
-	public void setCreatorOrders(Set<Order> creatorOrders) {
-		this.creatorOrders = creatorOrders;
-	}
-	
-	/**
-	 * 一对多，获取该用户是卖家身份所接收的所有订单
-	 * @return
-	 */
-	@OneToMany(mappedBy="sellerId",cascade={CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch=FetchType.LAZY)
-	public Set<Order> getSellerOrders() {
-		return sellerOrders;
-	}
-	public void setSellerOrders(Set<Order> sellerOrders) {
-		this.sellerOrders = sellerOrders;
 	}
 	
 	@OneToOne(mappedBy="userId",cascade={CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch=FetchType.LAZY)

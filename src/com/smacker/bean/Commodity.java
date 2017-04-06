@@ -2,13 +2,9 @@ package com.smacker.bean;
 
 import java.sql.Timestamp;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -40,7 +36,7 @@ private final static String COMMODITY_DEFAULT = "";
 	private Integer commodityOldNewLevel = -1;//新旧程度
 	private String commodityNewPrice = null;//原价
 	private String commodityOldPrice = null;//二手价
-	private User commodityOwner = null;//拥有者
+	private String commodityOwner = null;//拥有者
 	private Integer commodityDownDay = -1;//下架天数
 	private Timestamp commodifyCreateDate = null;//创建时间
 	private Integer wantShopCount = 0;//欲购物人数
@@ -109,16 +105,11 @@ private final static String COMMODITY_DEFAULT = "";
 		this.commodityOldPrice = commodityOldPrice;
 	}
 	
-	/**
-	 * 多对一，获取该物品的拥有者
-	 * @return
-	 */
-	@ManyToOne(cascade={CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch=FetchType.EAGER)
-	@JoinColumn(name="commodityOwnerId")
-	public User getCommodityOwner() {
+	
+	public String getCommodityOwner() {
 		return commodityOwner;
 	}
-	public void setCommodityOwner(User commodityOwner) {
+	public void setCommodityOwner(String commodityOwner) {
 		this.commodityOwner = commodityOwner;
 	}
 	public Integer getCommodityDownDay() {
@@ -138,15 +129,5 @@ private final static String COMMODITY_DEFAULT = "";
 	}
 	public void setWantShopCount(Integer wantShopCount) {
 		this.wantShopCount = wantShopCount;
-	}
-	/**
-	 * 增加隐藏用户敏感信息字段
-	 */
-	public void hideOwnerField() {
-		commodityOwner.setAllCommoditys(null);
-		commodityOwner.setCreatorOrders(null);
-		commodityOwner.setSellerOrders(null);
-		commodityOwner.setShopCar(null);
-		commodityOwner.setUserPassword(null);
 	}
 }

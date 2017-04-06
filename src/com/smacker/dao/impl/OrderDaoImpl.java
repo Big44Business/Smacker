@@ -81,9 +81,26 @@ public class OrderDaoImpl implements OrderDao {
 	}
 
 	@Override
-	public List<Order> getOrdersInUserId(String userId, OrderStatus status, UserType userType) {
+	public List<Order> getOrdersInUserId(final String userId, OrderStatus status, UserType userType) {
 		// TODO Auto-generated method stub
-		return null;
+		if(status.compareTo(OrderStatus.NONE_STATUS) == 0 && userType.compareTo(UserType.BOTH_TYPE) == 0) {
+			final String hql = "from Order o where o.userId = :userId or o.sellerId = :sellerId";
+			try {
+				return hibernateTemplate.execute(new HibernateCallback<List<Order>>() {
+					@SuppressWarnings("unchecked")
+					@Override
+					public List<Order> doInHibernate(Session session) throws HibernateException, SQLException {
+						Query q = session.createQuery(hql);
+						q.setString("userId", userId).setString("sellerId", userId);
+						return (List<Order>)q.list();
+					}
+				});
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+		} else
+			return null;
 	}
 
 	@Override

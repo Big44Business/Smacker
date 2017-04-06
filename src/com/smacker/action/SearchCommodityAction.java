@@ -58,9 +58,6 @@ public class SearchCommodityAction extends ActionSupport {
 			List<Commodity> cmdys = cd.getCommodityBySearch(content);
 			if(cmdys != null && cmdys.size() != 0) {
 				success = true;
-				for(Commodity c : cmdys) {
-					c.hideOwnerField();
-				}
 				jo.add("commoditys", gson.toJsonTree(cmdys));
 			} else
 				reason = "暂无该商品";

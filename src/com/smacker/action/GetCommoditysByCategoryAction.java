@@ -69,8 +69,6 @@ public class GetCommoditysByCategoryAction extends ActionSupport {
 		
 		List<Commodity> cmdtys = cd.getCommoditysByCategory(category, start, length);
 		if(cmdtys != null) {
-			for(Commodity c : cmdtys)
-				c.hideOwnerField();
 			success = true;
 			jo.add("cs", gson.toJsonTree(cmdtys));
 		} else 

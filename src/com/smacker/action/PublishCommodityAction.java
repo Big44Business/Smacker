@@ -16,7 +16,6 @@ import org.springframework.stereotype.Component;
 import com.google.gson.JsonObject;
 import com.opensymphony.xwork2.ActionSupport;
 import com.smacker.bean.Commodity;
-import com.smacker.bean.User;
 import com.smacker.dao.CommodityDao;
 import com.smacker.dao.UserDao;
 import com.smacker.tools.UploadFileUtil;
@@ -180,7 +179,7 @@ public class PublishCommodityAction extends ActionSupport {
 				cmdy.setCommodityCount(commodityCount);
 				cmdy.setCommodifyCreateDate(new Timestamp(System.currentTimeMillis()));	
 				cmdy.setCommodityNewPrice(commodityNewPrice);
-				cmdy.setCommodityOwner(ud.getUserInId(commodityOwner));
+				cmdy.setCommodityOwner(commodityOwner);
 				
 				if(cd.saveCommodity(cmdy)) {
 					success = true;

@@ -6,7 +6,6 @@
 	
 	<constant name="struts.devMode" value="true"/>
 	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
-	<constant name="struts.custom.i18n.resources" value="app" />
 	<!-- 设置最大上传文件的大小 2M-->
 	<constant name="struts.multipart.maxSize" value="5242880" />
 	<!-- 配置临时存储地址 -->
@@ -34,5 +33,7 @@
     	<action name="buyCommodity" class="buyCommodity" />
     	<!-- 获取批量商品，并进行分页操作 -->
     	<action name="getCommoditysByCategory" class="getCommoditysByCategory" />
+    	<!-- 获取用户所有订单 -->
+    	<action name="getOrdersByUserId" class="getOrdersByUserId" />
     </package>
 </struts>

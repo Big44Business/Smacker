@@ -105,13 +105,12 @@ public class BuyCommodityAction extends ActionSupport {
 				for(int i = 0; i < commodityId.length; i++) {
 					Order o = new Order();
 					Commodity c = cd.getCommodityInId(commodityId[i]);
-					c.hideOwnerField();
-					o.setCommodityId(c);
+					o.setCommodityId(commodityId[i]);
 					o.setSellerId(c.getCommodityOwner());
 					o.setAddr(addr[i]);
 					o.setUnitPrice(unitPrice[i]);
 					o.setCommodityCount(commodityCount[i]);
-					o.setUserId(user);
+					o.setUserId(user.getUserId());
 					o.setStatus("1");
 					o.setOrderDate(new Timestamp(System.currentTimeMillis()));
 					

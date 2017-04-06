@@ -14,7 +14,9 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.opensymphony.xwork2.ActionSupport;
 import com.smacker.bean.Commodity;
+import com.smacker.bean.User;
 import com.smacker.dao.CommodityDao;
+import com.smacker.dao.UserDao;
 
 @SuppressWarnings("serial")
 @Component("getCommodityInfo")
@@ -22,6 +24,7 @@ import com.smacker.dao.CommodityDao;
 public class GetCommodityInfoAction extends ActionSupport {
 
 	private CommodityDao cd;
+	private UserDao ud;
 	private String id;
 	public String getId() {
 		return id;
@@ -35,6 +38,13 @@ public class GetCommodityInfoAction extends ActionSupport {
 	@Resource(name="commodityDao")
 	public void setCd(CommodityDao cd) {
 		this.cd = cd;
+	}
+	public UserDao getUd() {
+		return ud;
+	}
+	@Resource(name="userDao")
+	public void setUd(UserDao ud) {
+		this.ud = ud;
 	}
 	
 	/**
@@ -53,12 +63,10 @@ public class GetCommodityInfoAction extends ActionSupport {
 		} catch(IOException e) {}
 		Commodity c = cd.getCommodityInId(id);
 		if(c != null) {
-			/**
-			 * 将不需要的字段 隐藏
-			 */
-			c.hideOwnerField();
+			User u = ud.getUserInId(c.getCommodityOwner());
 			success = true;
 			jo.add("commodity", gson.toJsonTree(c));
+			jo.add("u", gson.toJsonTree(u));
 		} else
 			reason = "该商品不存在";
 		
