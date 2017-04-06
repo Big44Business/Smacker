@@ -97,4 +97,24 @@ public class CommodityDaoImpl implements CommodityDao {
 			return null;
 		}
 	}
+
+	@Override
+	public List<Commodity> getCommoditysByCategory(final String category, final int start, final int length) {
+		// TODO Auto-generated method stub
+		try {
+			return hibernateTemplate.execute(new HibernateCallback<List<Commodity>>() {
+				@SuppressWarnings("unchecked")
+				@Override
+				public List<Commodity> doInHibernate(Session session) throws HibernateException, SQLException {
+					String hql = "from Commodity c where c.commodityCategary = :commodityCategary";
+					Query q = session.createQuery(hql);
+					q.setString("commodityCategary", category).setFirstResult(start).setMaxResults(length);
+					return (List<Commodity>)q.list();
+				}
+			});
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }
