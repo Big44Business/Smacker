@@ -51,6 +51,8 @@ public interface OrderDao {
 	 * @exception IllegalArgumentException NullPointerException
 	 */
 	public List<Order> getOrdersBeforeDate(String userId, Timestamp time, UserType userType);
+	
+	public Order getOrderById(String orderId);
 }
 
 

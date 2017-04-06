@@ -114,4 +114,10 @@ public class OrderDaoImpl implements OrderDao {
 		this.hibernateTemplate = hibernateTemplate;
 	}
 
+	@Override
+	public Order getOrderById(String orderId) {
+		// TODO Auto-generated method stub
+		return hibernateTemplate.get(Order.class, orderId);
+	}
+
 }
