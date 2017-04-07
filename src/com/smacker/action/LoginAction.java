@@ -61,7 +61,8 @@ public class LoginAction extends ActionSupport {
 			User user = ud.getUserByNickName(userNickName);
 			if(user != null && user.getUserPassword().equals(password)) {
 				success = true;
-				ServletActionContext.getRequest().getSession().setAttribute("user", user);
+				jo.addProperty("userId", user.getUserId());
+//				ServletActionContext.getRequest().getSession().setAttribute("user", user);
 			} else {
 				reason = "密码错误";
 			}
@@ -100,7 +101,8 @@ public class LoginAction extends ActionSupport {
 				userSave.setUserCreateDate(new Timestamp(System.currentTimeMillis()));
 				if(ud.saveUser(userSave)) {
 					success = true;
-					ServletActionContext.getRequest().getSession().setAttribute("user", userSave);
+					jo.addProperty("userId", userSave.getUserId());
+//					ServletActionContext.getRequest().getSession().setAttribute("user", userSave);
 				} else
 					reason = "注册失败！";
 			}

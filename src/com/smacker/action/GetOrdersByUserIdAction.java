@@ -43,6 +43,17 @@ public class GetOrdersByUserIdAction extends ActionSupport {
 		this.ud = ud;
 	}
 	
+	/**
+	 * 用户id
+	 */
+	private String userId;	
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	
 	public void get() {
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("application/json; charset=utf-8");
@@ -54,7 +65,7 @@ public class GetOrdersByUserIdAction extends ActionSupport {
 		try {
 			out = response.getWriter();
 		} catch(IOException e) {}
-		User user = (User) ServletActionContext.getRequest().getSession().getAttribute("user");
+		User user = ud.getUserInId(userId);
 		if(user != null) {
 			List<Order> os = od.getOrdersInUserId(user.getUserId(), OrderStatus.NONE_STATUS, UserType.BOTH_TYPE);
 			if(os != null) {

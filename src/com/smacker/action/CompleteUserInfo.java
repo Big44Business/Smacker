@@ -35,13 +35,19 @@ public class CompleteUserInfo extends ActionSupport {
 	public void setUd(UserDao ud) {
 		this.ud = ud;
 	}
-	
+	private String userId = null;
 	private String userNickName = null;
 	private String userIntroduce = null;//个人简介
 	private String userGender = null;
 	private String userAddress = null;
 	private String userTel = null;//电话
 	
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	public String getUserNickName() {
 		return userNickName;
 	}
@@ -107,7 +113,7 @@ public class CompleteUserInfo extends ActionSupport {
 			private String userAddress = null;
 			private String userTel = null;//电话
 		 */
-		User user = (User) ServletActionContext.getRequest().getSession().getAttribute("user");
+		User user = ud.getUserInId(userId);
 		
 		if(user != null) {
 			if(checkFields()) {

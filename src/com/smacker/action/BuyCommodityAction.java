@@ -18,12 +18,18 @@ import com.smacker.bean.Order;
 import com.smacker.bean.User;
 import com.smacker.dao.CommodityDao;
 import com.smacker.dao.OrderDao;
+import com.smacker.dao.UserDao;
 
 @SuppressWarnings("serial")
 @Component("buyCommodity")
 @Scope("prototype")
 public class BuyCommodityAction extends ActionSupport {
 
+	
+	/**
+	 * 用户id
+	 */
+	private String userId;
 	private String[] commodityId = null;
 	private String[] unitPrice = null;
 	private int[] commodityCount  = null;
@@ -53,9 +59,16 @@ public class BuyCommodityAction extends ActionSupport {
 	public void setAddr(String[] addr) {
 		this.addr = addr;
 	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	
 	private CommodityDao cd;
 	private OrderDao od;
+	private UserDao ud;
 	public CommodityDao getCd() {
 		return cd;
 	}
@@ -70,6 +83,14 @@ public class BuyCommodityAction extends ActionSupport {
 	public void setOd(OrderDao od) {
 		this.od = od;
 	}
+	public UserDao getUd() {
+		return ud;
+	}
+	@Resource(name="userDao")
+	public void setUd(UserDao ud) {
+		this.ud = ud;
+	}
+	
 	/**
 	 * 直接购买
 	 */
@@ -97,7 +118,7 @@ public class BuyCommodityAction extends ActionSupport {
 			out = response.getWriter();
 		} catch(IOException e) {}
 		
-		User user = (User) ServletActionContext.getRequest().getSession().getAttribute("user");
+		User user = ud.getUserInId(userId);
 		if(user != null) {
 			
 			if(commodityId.length > 0) {
