@@ -37,5 +37,7 @@
     	<action name="getOrdersByUserId" class="getOrdersByUserId" />
     	<!-- 获取单个订单信息 -->
     	<action name="getOrderInfo" class="getOrderInfo" />
+    	<!-- 删除订单 -->
+    	<action name="deleteOrder" class="deleteOrder" />
     </package>
 </struts>
