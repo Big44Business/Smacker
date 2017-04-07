@@ -31,15 +31,15 @@ public class CommodityDaoImpl implements CommodityDao {
 	}
 
 	@Override
-		public boolean updateCommodity(Commodity cmdty){
-				try{
-						hibernateTemplate.update(cmdty);
-						return true;
-				}catch(DataAccessException e){
-						System.out.println("在Commodityimpl中,更新commodity时出现异常");
-						return false;
-				}
+	public boolean updateCommodity(Commodity cmdty){
+		try{
+				hibernateTemplate.update(cmdty);
+				return true;
+		}catch(DataAccessException e){
+				System.out.println("在Commodityimpl中,更新commodity时出现异常");
+				return false;
 		}
+	}
 
 	@Override
 	public boolean deleteCommodity(final String cmdtyId) {

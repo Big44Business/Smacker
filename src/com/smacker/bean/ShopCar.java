@@ -8,19 +8,19 @@ import java.util.Vector;
  */
 public class ShopCar {
 	
-	private User userId = null;
-	private Vector<String> productIds = null;
+	private String userId = null;
+	private Vector<String> commodityIds = null;
 	
-	public User getUserId() {
+	public String getUserId() {
 		return userId;
 	}
-	public void setUserId(User userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	public Vector<String> getProductIds() {
-		return productIds;
+	public Vector<String> getCommodityIds() {
+		return commodityIds;
 	}
-	public void setProductIds(Vector<String> productIds) {
-		this.productIds = productIds;
+	public void setProductIds(Vector<String> commodityIds) {
+		this.commodityIds = commodityIds;
 	}
 }
