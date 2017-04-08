@@ -2,12 +2,9 @@ package com.smacker.bean;
 
 import java.sql.Timestamp;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -37,10 +34,6 @@ public class User {
 	private String isVerify = "0";//是否认证 (0:尚未认证；1:认证成功；2:认证失败；3:正在认证)
 	private String userTel = null;//电话
 	private String school = null;//学校
-	/**
-	 * 获取该用户的购物车
-	 */
-	private ShopCar shopCar = null;
 	
 	@Id
 	@GenericGenerator(name="uuid", strategy="uuid")
@@ -153,14 +146,6 @@ public class User {
 	}
 	public void setSchool(String school) {
 		this.school = school;
-	}
-	
-	@OneToOne(mappedBy="userId",cascade={CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch=FetchType.LAZY)
-	public ShopCar getShopCar() {
-		return shopCar;
-	}
-	public void setShopCar(ShopCar shopCar) {
-		this.shopCar = shopCar;
 	}
 	
 }
