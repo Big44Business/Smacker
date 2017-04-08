@@ -49,6 +49,7 @@
 				<value>com.smacker.bean.Commodity</value>
 				<value>com.smacker.bean.Order</value>
 				<value>com.smacker.bean.UserId_CommodityId</value>
+				<value>com.smacker.bean.Reply</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
