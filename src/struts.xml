@@ -43,5 +43,9 @@
     	<action name="addToShopCar" class="addToShopCar" />
     	<!-- 获取购物车信息 -->
     	<action name="getShopCarInfo" class="getShopCarInfo" />
+    	<!-- 给卖家商品进行留言 -->
+    	<action name="replyMessage" class="replyMessage" />
+    	<!-- 获取该商品的所有留言 -->
+    	<action name="getReplys" class="getReplys" />
     </package>
 </struts>
