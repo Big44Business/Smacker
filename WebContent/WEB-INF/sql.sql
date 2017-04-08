@@ -62,3 +62,14 @@ create table t_userId_commodityId (
 	constraint foreign key (userId) references t_user(userId),
 	constraint foreign key (commodityId) references t_commodity(commodityId)
 )engine=innoDB default charset=utf8;
+
+--买家给卖家商品留言
+create table t_reply (
+	replyId int primary key auto_increment,
+	commodityId varchar(32) not null,
+	replyUserId varchar(32) not null,
+	replyContent varchar(255),
+	Timestamp datetime default current_timestamp,
+	constraint foreign key (commodityId) references t_commodity(commodityId),
+	constraint foreign key (replyUserId) references t_user(userId)
+)engine=innoDB default charset=utf8;
