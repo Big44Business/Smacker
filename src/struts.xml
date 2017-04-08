@@ -39,5 +39,7 @@
     	<action name="getOrderInfo" class="getOrderInfo" />
     	<!-- 删除订单 -->
     	<action name="deleteOrder" class="deleteOrder" />
+    	<!-- 将商品加入购物车 -->
+    	<action name="addToShopCar" class="addToShopCar" />
     </package>
 </struts>

@@ -4,7 +4,6 @@ import com.smacker.bean.ShopCar;
 
 public interface ShopCarDao {
 
-	public boolean saveShopCar(ShopCar sc);
 	/**
 	 * 删除用户的购物车中的某几个订单
 	 * @param userId

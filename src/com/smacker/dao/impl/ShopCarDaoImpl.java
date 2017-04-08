@@ -27,17 +27,6 @@ public class ShopCarDaoImpl implements ShopCarDao {
 	}
 	
 	@Override
-	public boolean saveShopCar(ShopCar sc) {
-		// TODO Auto-generated method stub
-		try {
-			hibernateTemplate.save(sc);
-			return true;
-		} catch (DataAccessException e) {
-			return false;
-		}
-	}
-
-	@Override
 	public boolean deleteCommodityInShopCar(final String userId, final String[] commodityIds) {
 		// TODO Auto-generated method stub
 		boolean flag = true;
