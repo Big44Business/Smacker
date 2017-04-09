@@ -1,12 +1,5 @@
-<<<<<<< HEAD
 /.settings
 /build/
 /.project
 /.classpath
-*.java~
-=======
-/.settings
-/build/
-/.project
-/.classpath
->>>>>>> branch 'master' of git@github.com:Big44Business/Smacker.git
+/commodityPicture
