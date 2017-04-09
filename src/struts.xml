@@ -47,5 +47,7 @@
     	<action name="replyMessage" class="replyMessage" />
     	<!-- 获取该商品的所有留言 -->
     	<action name="getReplys" class="getReplys" />
+    	<!-- 发布商品 -->
+    	<action name="publishCommodity" class="publishCommodity" />
     </package>
 </struts>
