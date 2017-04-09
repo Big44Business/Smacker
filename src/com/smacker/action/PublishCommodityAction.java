@@ -25,6 +25,15 @@ import com.smacker.tools.UploadFileUtil;
 @Scope("prototype")
 public class PublishCommodityAction extends ActionSupport {
 
+	@Override
+	public String toString() {
+		return "PublishCommodityAction [commodityName=" + commodityName + ", commodityCategary=" + commodityCategary
+				+ ", isOrder=" + isOrder + ", commodityDescribe=" + commodityDescribe + ", commodityCount="
+				+ commodityCount + ", commodityNewPrice=" + commodityNewPrice + ", commodifyCreateDate="
+				+ commodifyCreateDate + ", commodityOwner=" + commodityOwner + ", pictureFileName=" + pictureFileName
+				+ ", pictureContentType=" + pictureContentType + "]";
+	}
+
 	/**
 	 * 图片存入数据库的地址s
 	 */
@@ -132,6 +141,7 @@ public class PublishCommodityAction extends ActionSupport {
 	}
 	
 	public void publishCommodity() {
+System.out.println(toString());
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = null;

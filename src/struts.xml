@@ -27,6 +27,8 @@
     	<action name="completeInfo" class="completeUserInfo" />
     	<!-- 获取商品信息action -->
     	<action name="getCommodityInfo" class="getCommodityInfo" />
+    	<!-- 发布商品 -->
+    	<action name="publishCommodity" class="publishCommodity" />
     	<!-- 进行商品的搜索 -->
     	<action name="searchCommodity" class="searchCommodity" />
     	<!-- 购买商品，提交订单处理 -->
@@ -47,7 +49,5 @@
     	<action name="replyMessage" class="replyMessage" />
     	<!-- 获取该商品的所有留言 -->
     	<action name="getReplys" class="getReplys" />
-    	<!-- 发布商品 -->
-    	<action name="publishCommodity" class="publishCommodity" />
     </package>
 </struts>
