@@ -152,10 +152,6 @@ System.out.println(toString());
 			out = response.getWriter();
 		} catch(IOException e) {}
 		
-		/**
-		 * 保证传输过来的是图片
-		 */
-		if(pictureContentType.split("/")[0].equals("image")) {
 			/**
 			 * 自定义上传的图像名
 			 */
@@ -189,7 +185,7 @@ System.out.println(toString());
 				cmdy.setCommodityCount(commodityCount);
 				cmdy.setCommodifyCreateDate(new Timestamp(System.currentTimeMillis()));	
 				cmdy.setCommodityNewPrice(commodityNewPrice);
-				cmdy.setCommodityOwner(commodityOwner);
+				cmdy.setCommodityOwnerId(commodityOwner);
 				
 				if(cd.saveCommodity(cmdy)) {
 					success = true;
@@ -198,8 +194,6 @@ System.out.println(toString());
 			} else
 				reason = "图片写入失败";
 			
-		} else
-			reason = "图片格式错误";
 		
 		jo.addProperty("success", success);
 		jo.addProperty("reason", reason);

@@ -63,7 +63,7 @@ public class GetCommodityInfoAction extends ActionSupport {
 		} catch(IOException e) {}
 		Commodity c = cd.getCommodityInId(id);
 		if(c != null) {
-			User u = ud.getUserInId(c.getCommodityOwner());
+			User u = ud.getUserInId(c.getCommodityOwnerId());
 			success = true;
 			jo.add("commodity", gson.toJsonTree(c));
 			jo.add("u", gson.toJsonTree(u));

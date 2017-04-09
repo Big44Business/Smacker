@@ -19,7 +19,7 @@ public class Commodity {
 				+ commodityCategary + ", isOrder=" + isOrder + ", commodityPicture=" + commodityPicture
 				+ ", commodityDescribe=" + commodityDescribe + ", commodityCount=" + commodityCount
 				+ ", commodityOldNewLevel=" + commodityOldNewLevel + ", commodityNewPrice=" + commodityNewPrice
-				+ ", commodityOldPrice=" + commodityOldPrice + ", commodityOwner=" + commodityOwner
+				+ ", commodityOldPrice=" + commodityOldPrice + ", commodityOwnerId=" + commodityOwnerId
 				+ ", commodityDownDay=" + commodityDownDay + ", commodifyCreateDate=" + commodifyCreateDate
 				+ ", wantShopCount=" + wantShopCount + "]";
 	}
@@ -36,7 +36,7 @@ private final static String COMMODITY_DEFAULT = "";
 	private Integer commodityOldNewLevel = -1;//新旧程度
 	private String commodityNewPrice = null;//原价
 	private String commodityOldPrice = null;//二手价
-	private String commodityOwner = null;//拥有者
+	private String commodityOwnerId = null;//拥有者
 	private Integer commodityDownDay = -1;//下架天数
 	private Timestamp commodifyCreateDate = null;//创建时间
 	private Integer wantShopCount = 0;//欲购物人数
@@ -106,11 +106,11 @@ private final static String COMMODITY_DEFAULT = "";
 	}
 	
 	
-	public String getCommodityOwner() {
-		return commodityOwner;
+	public String getCommodityOwnerId() {
+		return commodityOwnerId;
 	}
-	public void setCommodityOwner(String commodityOwner) {
-		this.commodityOwner = commodityOwner;
+	public void setCommodityOwnerId(String commodityOwnerId) {
+		this.commodityOwnerId = commodityOwnerId;
 	}
 	public Integer getCommodityDownDay() {
 		return commodityDownDay;
