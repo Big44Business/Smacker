@@ -3,6 +3,7 @@ package com.smacker.action;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -26,39 +27,26 @@ import com.smacker.dao.UserDao;
 public class BuyCommodityAction extends ActionSupport {
 
 	
+	public List<String> getCommodityId() {
+		return commodityId;
+	}
+	public void setCommodityId(List<String> commodityId) {
+		this.commodityId = commodityId;
+	}
+	public String getAddr() {
+		return addr;
+	}
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+
 	/**
 	 * 用户id
 	 */
 	private String userId;
-	private String[] commodityId = null;
-	private String[] unitPrice = null;
-	private int[] commodityCount  = null;
-	private String[] addr = null;
+	private List<String> commodityId = null;
+	private String addr = null;
 	
-	public String[] getCommodityId() {
-		return commodityId;
-	}
-	public void setCommodityId(String[] commodityId) {
-		this.commodityId = commodityId;
-	}
-	public String[] getUnitPrice() {
-		return unitPrice;
-	}
-	public void setUnitPrice(String[] unitPrice) {
-		this.unitPrice = unitPrice;
-	}
-	public int[] getCommodityCount() {
-		return commodityCount;
-	}
-	public void setCommodityCount(int[] commodityCount) {
-		this.commodityCount = commodityCount;
-	}
-	public String[] getAddr() {
-		return addr;
-	}
-	public void setAddr(String[] addr) {
-		this.addr = addr;
-	}
 	public String getUserId() {
 		return userId;
 	}
@@ -96,18 +84,6 @@ public class BuyCommodityAction extends ActionSupport {
 	 */
 	public void buy() {
 		
-		/**
-		 * 
-		 * private Commodity commodityId = null;	//商品
-		private String unitPrice = "0.00";				//单价
-		private int commodityCount = 0;			//个数
-		private User userId = null;				//买方
-		private User sellerId = null;			//卖方
-		private String addr = null;				//地址
-		private String status = "0";	
-		 */
-		
-		
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = null;
@@ -121,16 +97,16 @@ public class BuyCommodityAction extends ActionSupport {
 		User user = ud.getUserInId(userId);
 		if(user != null) {
 			
-			if(commodityId.length > 0) {
+			if(commodityId.size() > 0) {
 				
-				for(int i = 0; i < commodityId.length; i++) {
+				for(int i = 0; i < commodityId.size(); i++) {
 					Order o = new Order();
-					Commodity c = cd.getCommodityInId(commodityId[i]);
-					o.setCommodityId(commodityId[i]);
+					Commodity c = cd.getCommodityInId(commodityId.get(i));
+					o.setCommodityId(commodityId.get(i));
 					o.setSellerId(c.getCommodityOwnerId());
-					o.setAddr(addr[i]);
-					o.setUnitPrice(unitPrice[i]);
-					o.setCommodityCount(commodityCount[i]);
+					o.setAddr(addr);
+					o.setUnitPrice(c.getCommodityNewPrice());
+					o.setCommodityCount(c.getCommodityCount());
 					o.setUserId(user.getUserId());
 					o.setStatus("1");
 					o.setOrderDate(new Timestamp(System.currentTimeMillis()));

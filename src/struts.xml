@@ -49,5 +49,7 @@
     	<action name="replyMessage" class="replyMessage" />
     	<!-- 获取该商品的所有留言 -->
     	<action name="getReplys" class="getReplys" />
+    	
+    	<action name="getUserInfo" class="getUserInfo" />
     </package>
 </struts>

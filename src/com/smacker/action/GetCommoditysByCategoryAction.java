@@ -55,7 +55,9 @@ public class GetCommoditysByCategoryAction extends ActionSupport {
 	}
 	
 	public void get() {
-		
+
+System.out.println("商品展示分页：" + start + ", " + length);
+
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = null;

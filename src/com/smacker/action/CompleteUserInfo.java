@@ -118,18 +118,22 @@ public class CompleteUserInfo extends ActionSupport {
 		if(user != null) {
 			if(checkFields()) {
 				
-				if(ud.getUserByNickName(userNickName) == null) {
+				
+				if(ud.getUserByNickName(userNickName) != null && !userNickName.equals(user.getUserNickName())) {
+					reason = "该昵称已用人使用!";
+				} else {
 					user.setUserNickName(userNickName);
 					user.setUserIntroduce(userIntroduce);
 					user.setUserGender(userGender);
 					user.setUserTel(userTel);
+					user.setUserAddress(userAddress);
 					
 					if(ud.updateUser(user)) {
 						success = true;
 					} else
 						reason = "更新失败!";
-				} else
-					reason = "该昵称已用人使用!";
+				}
+					
 			} else
 				reason = "请将信息填写完整";
 		} else 

@@ -2,6 +2,8 @@ package com.smacker.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -13,8 +15,10 @@ import org.springframework.stereotype.Component;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.opensymphony.xwork2.ActionSupport;
+import com.smacker.bean.Commodity;
 import com.smacker.bean.ShopCar;
 import com.smacker.bean.User;
+import com.smacker.dao.CommodityDao;
 import com.smacker.dao.ShopCarDao;
 import com.smacker.dao.UserDao;
 
@@ -26,7 +30,7 @@ public class GetShopCarInfoAction extends ActionSupport {
 	private String userId;
 	private ShopCarDao scd;
 	private UserDao ud;
-	
+	private CommodityDao cd;
 
 	public String getUserId() {
 		return userId;
@@ -50,6 +54,13 @@ public class GetShopCarInfoAction extends ActionSupport {
 	public void setUd(UserDao ud) {
 		this.ud = ud;
 	}
+	public CommodityDao getCd() {
+		return cd;
+	}
+	@Resource(name="commodityDao")
+	public void setCd(CommodityDao cd) {
+		this.cd = cd;
+	}
 	
 	public void get() {
 		HttpServletResponse response = ServletActionContext.getResponse();
@@ -67,6 +78,11 @@ public class GetShopCarInfoAction extends ActionSupport {
 			ShopCar sc = scd.getShopCar(userId);
 			if(sc != null) {
 				success = true;
+				List<Commodity> cs = new ArrayList<>();
+				for(String s : sc.getCommodityIds()) {
+					cs.add(cd.getCommodityInId(s));
+				}
+				jo.add("commodities", gson.toJsonTree(cs));
 				jo.add("shopCar", gson.toJsonTree(sc));
 			} else
 				reason = "获取失败";

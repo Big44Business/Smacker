@@ -18,7 +18,7 @@ public class Reply {
 	private int replyId;
 	private String commodityId;
 	private String replyUserId;
-	private String replyContent;
+	private String replyContent = "";
 	private Timestamp replyTime;
 	
 	@Id

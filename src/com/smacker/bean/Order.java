@@ -19,7 +19,7 @@ public class Order {
 	private int commodityCount = 0;			//个数
 	private String userId = null;				//买方
 	private String sellerId = null;			//卖方
-	private String addr = null;				//地址
+	private String addr = "";				//地址
 	private String status = "0";			//状态(0:订单未创建；1:订单成功；2:订单作废)
 	private Timestamp orderDate = null;
 	

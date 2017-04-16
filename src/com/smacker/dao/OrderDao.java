@@ -15,7 +15,7 @@ public interface OrderDao {
 	 * @return boolean
 	 * @exception NullPointerException
 	 */
-	public boolean deleteOrder(String orderId);
+	public boolean deleteOrder(Order order);
 	/**
 	 * 单个订单的更新
 	 * @param order

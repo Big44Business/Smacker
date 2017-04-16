@@ -14,10 +14,12 @@ import org.springframework.stereotype.Component;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.opensymphony.xwork2.ActionSupport;
+import com.smacker.bean.Commodity;
 import com.smacker.bean.Order;
 import com.smacker.bean.OrderStatus;
 import com.smacker.bean.User;
 import com.smacker.bean.UserType;
+import com.smacker.dao.CommodityDao;
 import com.smacker.dao.OrderDao;
 import com.smacker.dao.UserDao;
 
@@ -28,6 +30,7 @@ public class GetOrdersByUserIdAction extends ActionSupport {
 
 	private OrderDao od;
 	private UserDao ud;
+	private CommodityDao cd;
 	public OrderDao getOd() {
 		return od;
 	}
@@ -41,6 +44,13 @@ public class GetOrdersByUserIdAction extends ActionSupport {
 	@Resource(name="userDao")
 	public void setUd(UserDao ud) {
 		this.ud = ud;
+	}
+	public CommodityDao getCd() {
+		return cd;
+	}
+	@Resource(name="commodityDao")
+	public void setCd(CommodityDao cd) {
+		this.cd = cd;
 	}
 	
 	/**
@@ -69,16 +79,19 @@ public class GetOrdersByUserIdAction extends ActionSupport {
 		if(user != null) {
 			List<Order> os = od.getOrdersInUserId(user.getUserId(), OrderStatus.NONE_STATUS, UserType.BOTH_TYPE);
 			if(os != null) {
+				success = true;
 				User[] users = new User[os.size()];
 				User[] seller = new User[os.size()];
-				
+				Commodity[] commoditys = new Commodity[os.size()];
 				for(int i = 0; i < os.size(); i++) {
 					users[i] = ud.getUserInId(os.get(i).getUserId());
 					users[i].setUserPassword(null);
 					seller[i] = ud.getUserInId(os.get(i).getSellerId());
 					seller[i].setUserPassword(null);
+					commoditys[i] = cd.getCommodityInId(os.get(i).getCommodityId());
 				}
 				jo.add("os", gson.toJsonTree(os));
+				jo.add("commodities", gson.toJsonTree(commoditys));
 				jo.add("users", gson.toJsonTree(users));//买家信息
 				jo.add("seller", gson.toJsonTree(seller));//卖家信息
 			} else

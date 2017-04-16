@@ -35,22 +35,12 @@ public class OrderDaoImpl implements OrderDao {
 	}
 
 	@Override
-	public boolean deleteOrder(final String orderId) {
+	public boolean deleteOrder(Order order) {
 		try {
-			return hibernateTemplate.execute(new HibernateCallback<Boolean>() {
-				@Override
-				public Boolean doInHibernate(Session session) throws HibernateException, SQLException {
-					String hql = "delete Order where orderId=?";
-					Query q = session.createQuery(hql);
-					q.setParameter("orderId", orderId);
-					q.executeUpdate();
-					return false;
-				}
-
-			});
-		} catch (Exception e) {
-			System.out.println("在OrderDaoImpl中，删除Order信息时出现异常！");
-			e.printStackTrace();
+			hibernateTemplate.delete(order);
+			return true;
+		} catch (DataAccessException e) {
+			System.out.println("在Orderdaoimpl中,更新Order信息时出现异常！");
 			return false;
 		}
 	}

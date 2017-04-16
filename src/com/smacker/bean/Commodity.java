@@ -20,24 +20,23 @@ public class Commodity {
 				+ ", commodityDescribe=" + commodityDescribe + ", commodityCount=" + commodityCount
 				+ ", commodityOldNewLevel=" + commodityOldNewLevel + ", commodityNewPrice=" + commodityNewPrice
 				+ ", commodityOldPrice=" + commodityOldPrice + ", commodityOwnerId=" + commodityOwnerId
-				+ ", commodityDownDay=" + commodityDownDay + ", commodifyCreateDate=" + commodifyCreateDate
+				 + ", commodifyCreateDate=" + commodifyCreateDate
 				+ ", wantShopCount=" + wantShopCount + "]";
 	}
 @SuppressWarnings("unused")
 private final static String COMMODITY_DEFAULT = "";
-	
+
 	private String commodityId = null;
-	private String commodityName = null;//物品名称
-	private String commodityCategary = null;//物品类别(0:出售的商品，1:预购的商品，2:二手物品交换)
-	private String isOrder = null;//是否被定(0:正在出售,1:已被订购,2:已出售)
-	private String commodityPicture = null;//物品图片
-	private String commodityDescribe = null;//物品描述
+	private String commodityName = "";//物品名称
+	private String commodityCategary = "";//物品类别(0:出售的商品，1:预购的商品，2:二手物品交换)
+	private String isOrder = "";//是否被定(0:正在出售,1:已被订购,2:已出售)
+	private String commodityPicture = "";//物品图片
+	private String commodityDescribe = "";//物品描述
 	private Integer commodityCount = -1;//物品数量
 	private Integer commodityOldNewLevel = -1;//新旧程度
-	private String commodityNewPrice = null;//原价
-	private String commodityOldPrice = null;//二手价
-	private String commodityOwnerId = null;//拥有者
-	private Integer commodityDownDay = -1;//下架天数
+	private String commodityNewPrice = "";//原价
+	private String commodityOldPrice = "";//二手价
+	private String commodityOwnerId = "";//拥有者
 	private Timestamp commodifyCreateDate = null;//创建时间
 	private Integer wantShopCount = 0;//欲购物人数
 	
@@ -104,19 +103,11 @@ private final static String COMMODITY_DEFAULT = "";
 	public void setCommodityOldPrice(String commodityOldPrice) {
 		this.commodityOldPrice = commodityOldPrice;
 	}
-	
-	
 	public String getCommodityOwnerId() {
 		return commodityOwnerId;
 	}
 	public void setCommodityOwnerId(String commodityOwnerId) {
 		this.commodityOwnerId = commodityOwnerId;
-	}
-	public Integer getCommodityDownDay() {
-		return commodityDownDay;
-	}
-	public void setCommodityDownDay(Integer commodityDownDay) {
-		this.commodityDownDay = commodityDownDay;
 	}
 	public Timestamp getCommodifyCreateDate() {
 		return commodifyCreateDate;

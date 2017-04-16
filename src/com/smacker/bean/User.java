@@ -17,23 +17,13 @@ public class User {
 	private final static String PHOTO_DEFAULT = "";
 
 	private String userId = null;
-	private String userNickName = null;//用户昵称
-	private String userEmail = null;//用户邮箱
-	private String userRealName = null;//用户真实姓名
+	private String userNickName = "";//用户昵称
 	private String userPassword = "123456";
-	private String userIntroduce = null;//个人简介
-	private String userGender = null;
-	private Timestamp userBirthday = null;
-	private String userPhoto = "";//用户头像
-	private String userRealPhoto = "";//用户照片
-	private String userAddress = null;//所属高校
-	private String userIp = null;
-	private String userWeChat = null;
-	private String userIdCard = null;
+	private String userIntroduce = "";//个人简介
+	private String userGender = "";
+	private String userAddress = "";
 	private Timestamp userCreateDate = null;
-	private String isVerify = "0";//是否认证 (0:尚未认证；1:认证成功；2:认证失败；3:正在认证)
-	private String userTel = null;//电话
-	private String school = null;//学校
+	private String userTel = "";//电话
 	
 	@Id
 	@GenericGenerator(name="uuid", strategy="uuid")
@@ -49,18 +39,6 @@ public class User {
 	}
 	public void setUserNickName(String userNickName) {
 		this.userNickName = userNickName;
-	}
-	public String getUserEmail() {
-		return userEmail;
-	}
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
-	}
-	public String getUserRealName() {
-		return userRealName;
-	}
-	public void setUserRealName(String userRealName) {
-		this.userRealName = userRealName;
 	}
 	public String getUserPassword() {
 		return userPassword;
@@ -80,47 +58,11 @@ public class User {
 	public void setUserGender(String userGender) {
 		this.userGender = userGender;
 	}
-	public Timestamp getUserBirthday() {
-		return userBirthday;
-	}
-	public void setUserBirthday(Timestamp userBirthday) {
-		this.userBirthday = userBirthday;
-	}
-	public String getUserPhoto() {
-		return userPhoto;
-	}
-	public void setUserPhoto(String userPhoto) {
-		this.userPhoto = userPhoto;
-	}
-	public String getUserRealPhoto() {
-		return userRealPhoto;
-	}
-	public void setUserRealPhoto(String userRealPhoto) {
-		this.userRealPhoto = userRealPhoto;
-	}
 	public String getUserAddress() {
 		return userAddress;
 	}
 	public void setUserAddress(String userAddress) {
 		this.userAddress = userAddress;
-	}
-	public String getUserIp() {
-		return userIp;
-	}
-	public void setUserIp(String userIp) {
-		this.userIp = userIp;
-	}
-	public String getUserWeChat() {
-		return userWeChat;
-	}
-	public void setUserWeChat(String userWeChat) {
-		this.userWeChat = userWeChat;
-	}
-	public String getUserIdCard() {
-		return userIdCard;
-	}
-	public void setUserIdCard(String userIdCard) {
-		this.userIdCard = userIdCard;
 	}
 	public Timestamp getUserCreateDate() {
 		return userCreateDate;
@@ -128,24 +70,11 @@ public class User {
 	public void setUserCreateDate(Timestamp userCreateDate) {
 		this.userCreateDate = userCreateDate;
 	}
-	public String getIsVerify() {
-		return isVerify;
-	}
-	public void setIsVerify(String isVerify) {
-		this.isVerify = isVerify;
-	}
 	public String getUserTel() {
 		return userTel;
 	}
 	public void setUserTel(String userTel) {
 		this.userTel = userTel;
-	}
-	
-	public String getSchool() {
-		return school;
-	}
-	public void setSchool(String school) {
-		this.school = school;
 	}
 	
 }

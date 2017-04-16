@@ -78,6 +78,7 @@ public class GetReplysAction extends ActionSupport {
 		if(u != null) {
 			List<Reply> rs = rd.getReplysBuCommodityId(commodityId);
 			if(rs != null) {
+				success = true;
 				User[] users = new User[rs.size()];
 				for(int i = 0; i < rs.size(); i++) {
 					users[i] = ud.getUserInId(rs.get(i).getReplyUserId());
