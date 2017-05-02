@@ -22,7 +22,8 @@ public class TestDaoImpl extends AbstractJUnit4SpringContextTests {
 	public void testSave() {
 		User user = new User();
 		user.setUserNickName("罗亚飞ssss");
-		user.setUserEmail("luoyaefiss@qq.com");
+		//user.setUserEmail("luoyaefiss@qq.com");
+		
 		user.setUserPassword("12345ss6");
 		ht.save(user);
 //		userDao.saveUser(user);
@@ -32,7 +33,7 @@ public class TestDaoImpl extends AbstractJUnit4SpringContextTests {
 		UserDao userDao = new ClassPathXmlApplicationContext("beans.xml").getBean("userDao",UserDao.class);
 		User user = new User();
 		user.setUserNickName("罗亚飞");
-		user.setUserEmail("luoyaefi@qq.com");
+		//user.setUserEmail("luoyaefi@qq.com");
 		user.setUserPassword("123456");
 		userDao.saveUser(user);
 	}
