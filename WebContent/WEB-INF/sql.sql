@@ -12,20 +12,20 @@ create table t_user(
 )engine=innoDB default charset=utf8;
 
 create table t_commodity(
-		commodityId varchar(32) primary key,
-		commodityName varchar(32) not null,		
-		commodityCategary varchar(10),			
-		commodityPicture varchar(255),			
-		commodityDescribe varchar(255),			
-		commodityCount int,					
-		commodityOldNewLevel int,			
-		commodityNewPrice varchar(32),				
-		commodityOldPrice varchar(32),				
-		commodityOwnerId varchar(32),		
-		commodifyCreateDate datetime default current_timestamp,		
-		wantShopCount int,
-		isOrder varchar(1)
-	)engine=innoDB default charset=utf8
+	commodityId varchar(32) primary key,
+	commodityName varchar(32) not null,		
+	commodityCategary varchar(10),			
+	commodityPicture varchar(255),			
+	commodityDescribe varchar(255),			
+	commodityCount int,					
+	commodityOldNewLevel int,			
+	commodityNewPrice varchar(32),				
+	commodityOldPrice varchar(32),				
+	commodityOwnerId varchar(32),		
+	commodifyCreateDate datetime default current_timestamp,		
+	wantShopCount int,
+	isOrder varchar(1)
+)engine=innoDB default charset=utf8
 
 --用来记录订单
 create table t_commodityOrder (
